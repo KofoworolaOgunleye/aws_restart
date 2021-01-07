@@ -1,5 +1,8 @@
 # Lab 8: Composite Data Type
 # This exercise involves creating a data type that consists of a string inside a dictionary inside a list.
+# The program reads an inventory from a csv file (carfleet.csv) and prints the inventory from the copy in memory. 
+# it uses open syntax statement, which keeps a file open as long as you are reading data, it will automatically close the
+# CSV file when the code inside the with block is finished executing.
 
 import csv
 import copy
@@ -35,7 +38,7 @@ with open('car_fleet.csv') as csvFile:
             lineCount += 1
         else:
             print(f'vin: {row[0]} make: {row[1]}, model: {row[2]}, year: {row[3]}, range: {row[4]}, topSpeed: {row[5]}, zeroSixty: {row[6]}, mileage: {row[7]}')
-            currentVehicle = copy.deepcopy(myVehicle)
+            currentVehicle = copy.deepcopy(myVehicle) # points to the storage location of the myVehicle dictionary variable
             currentVehicle["vin"] = row[0]
             currentVehicle["make"] = row[1]
             currentVehicle["model"] = row[2]
@@ -53,3 +56,8 @@ for myCarProperties in myInventoryList:
     for key, value in myCarProperties.items():
        print("{} : {}".format(key,value))
     print("-----")
+                  
+                  
+ 
+# Without deepcopy, you would only have one storage box and only the last item in the list would be copied into memory. 
+# it makes sure new storage boxes are created in memory to put the new tabular data being read in.
