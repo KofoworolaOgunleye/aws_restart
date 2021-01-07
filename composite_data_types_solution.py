@@ -1,4 +1,5 @@
 # Lab 8: Composite Data Type
+# This exercise involves creating a data type that consists of a string inside a dictionary inside a list.
 
 import csv
 import copy
